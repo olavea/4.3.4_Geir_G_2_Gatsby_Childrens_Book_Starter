@@ -52,7 +52,7 @@ export const query = graphql`
   query PageQuery($slug: String!) {
     file(name: { eq: $slug }) {
       childImageSharp {
-        fluid(maxWidth: 1000) {
+        fluid(maxWidth: 1300) {
           ...GatsbyImageSharpFluid
         }
       }
