@@ -1,19 +1,18 @@
 import React, { Component } from "react";
 import { Link, graphql } from "gatsby";
-import Layout from "../components/layout";
+// import Layout from "../components/layout";
 import Img from "gatsby-image";
 
 export default class bookPageLayout extends Component {
   render() {
     const { file } = this.props.data;
     const currentPage = file.name;
-    const prevPage = currentPage - 1 === 1 ? "/" : (currentPage - 1).toString();
+    const prevPage = currentPage - 1 === 0 ? "/" : (currentPage - 1).toString();
     var conCurrentPage = Number(currentPage);
     const nextPage = (conCurrentPage + 1).toString();
 
     return (
-      <Layout>
-        <Img fluid={file.childImageSharp.fluid} />
+      <>
         <ul
           style={{
             background: `pink`,
@@ -43,7 +42,8 @@ export default class bookPageLayout extends Component {
             )}
           </li>
         </ul>
-      </Layout>
+        <Img fluid={file.childImageSharp.fluid} />
+      </>
     );
   }
 }
@@ -63,18 +63,3 @@ export const query = graphql`
     }
   }
 `;
-
-// <img
-//           style={{
-//             width: `66px`,
-//           }}
-//           src={file.absolutePath}
-//           alt="LillianUnicorn2"
-//         />
-//         <img
-//           style={{
-//             width: `66px`,
-//           }}
-//           src={file.relativePath}
-//           alt="LillianUnicorn2"
-//         />

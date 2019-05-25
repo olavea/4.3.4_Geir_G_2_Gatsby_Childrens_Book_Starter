@@ -1,11 +1,11 @@
-const path = require("path")
+const path = require("path");
 
 exports.createPages = ({ graphql, actions }) => {
-  const { createPage } = actions
+  const { createPage } = actions;
   return new Promise((resolve, reject) => {
     graphql(`
       query PeterGQuery {
-        allFile(sort: { order: ASC, fields: [name] }) {
+        allFile(sort: { order: ASC, fields: [name] }, skip: 99) {
           edges {
             node {
               name
@@ -21,12 +21,12 @@ exports.createPages = ({ graphql, actions }) => {
           context: {
             slug: node.name,
           },
-        })
-      })
-      resolve()
-    })
-  })
-}
+        });
+      });
+      resolve();
+    });
+  });
+};
 
 /**`/bookpage/${node.frontmatter.title}`,
  * context: {
